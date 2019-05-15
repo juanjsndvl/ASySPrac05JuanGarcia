@@ -1,0 +1,274 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>tabla</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-14"><meta name="DC.source" content="tabla.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">function</span> tabla
+tabl=zeros(16,4);
+dnexacto=@(n) 0.504/(1+4*n*j);
+<span class="keyword">for</span> col=1:6
+    <span class="keyword">switch</span> col
+        <span class="keyword">case</span> 1
+            <span class="keyword">for</span> i=0:15
+                tabl(i+1,1)=i;
+            <span class="keyword">end</span>
+        <span class="keyword">case</span> 2
+            <span class="keyword">for</span> ii=0:15
+                tabl(ii+1,2)=abs(dnexacto(ii));
+            <span class="keyword">end</span>
+<span class="comment">%         case 3</span>
+<span class="comment">%             T_0 = pi; N_0 = 256; T = T_0/N_0; t = (0:T:T*(N_0-1))'; M = 10;</span>
+<span class="comment">%             x = exp(-t/2); x(1) = (exp(-pi/2) + 1)/2;</span>
+<span class="comment">%             D_n = fft (x)/N_0; n = [0:15]';</span>
+<span class="comment">%             for iii=0:15</span>
+<span class="comment">%                 tabl(iii+1,3)=abs(fftshift (D_n));</span>
+<span class="comment">%             end</span>
+<span class="comment">%         case 4</span>
+<span class="comment">%             m=15000;</span>
+<span class="comment">% n=(0:4);</span>
+<span class="comment">% b=pi; a=0; t=-100:.1:100;</span>
+<span class="comment">% w0=2*pi/(b-a);</span>
+<span class="comment">% f=@(t) exp(-t/2)*exp(-n*w0*1i*t);</span>
+<span class="comment">%</span>
+<span class="comment">% h=(b-a)/m;</span>
+<span class="comment">%</span>
+<span class="comment">% aprox=f(a)+f(b);</span>
+<span class="comment">% for i=1:m-1</span>
+<span class="comment">% x=a+i*h;</span>
+<span class="comment">% aprox=aprox+2*f(x);</span>
+<span class="comment">% for iv=1:16</span>
+<span class="comment">%     aprox=(h/2)*aprox;</span>
+<span class="comment">% tabl(iv,4)=aprox;</span>
+<span class="comment">% end</span>
+<span class="comment">%     end</span>
+<span class="keyword">end</span>
+tabl
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">
+tabl =
+
+     0     0     0     0
+     1     0     0     0
+     2     0     0     0
+     3     0     0     0
+     4     0     0     0
+     5     0     0     0
+     6     0     0     0
+     7     0     0     0
+     8     0     0     0
+     9     0     0     0
+    10     0     0     0
+    11     0     0     0
+    12     0     0     0
+    13     0     0     0
+    14     0     0     0
+    15     0     0     0
+
+
+tabl =
+
+         0    0.5040         0         0
+    1.0000    0.1222         0         0
+    2.0000    0.0625         0         0
+    3.0000    0.0419         0         0
+    4.0000    0.0314         0         0
+    5.0000    0.0252         0         0
+    6.0000    0.0210         0         0
+    7.0000    0.0180         0         0
+    8.0000    0.0157         0         0
+    9.0000    0.0140         0         0
+   10.0000    0.0126         0         0
+   11.0000    0.0115         0         0
+   12.0000    0.0105         0         0
+   13.0000    0.0097         0         0
+   14.0000    0.0090         0         0
+   15.0000    0.0084         0         0
+
+
+tabl =
+
+         0    0.5040         0         0
+    1.0000    0.1222         0         0
+    2.0000    0.0625         0         0
+    3.0000    0.0419         0         0
+    4.0000    0.0314         0         0
+    5.0000    0.0252         0         0
+    6.0000    0.0210         0         0
+    7.0000    0.0180         0         0
+    8.0000    0.0157         0         0
+    9.0000    0.0140         0         0
+   10.0000    0.0126         0         0
+   11.0000    0.0115         0         0
+   12.0000    0.0105         0         0
+   13.0000    0.0097         0         0
+   14.0000    0.0090         0         0
+   15.0000    0.0084         0         0
+
+
+tabl =
+
+         0    0.5040         0         0
+    1.0000    0.1222         0         0
+    2.0000    0.0625         0         0
+    3.0000    0.0419         0         0
+    4.0000    0.0314         0         0
+    5.0000    0.0252         0         0
+    6.0000    0.0210         0         0
+    7.0000    0.0180         0         0
+    8.0000    0.0157         0         0
+    9.0000    0.0140         0         0
+   10.0000    0.0126         0         0
+   11.0000    0.0115         0         0
+   12.0000    0.0105         0         0
+   13.0000    0.0097         0         0
+   14.0000    0.0090         0         0
+   15.0000    0.0084         0         0
+
+
+tabl =
+
+         0    0.5040         0         0
+    1.0000    0.1222         0         0
+    2.0000    0.0625         0         0
+    3.0000    0.0419         0         0
+    4.0000    0.0314         0         0
+    5.0000    0.0252         0         0
+    6.0000    0.0210         0         0
+    7.0000    0.0180         0         0
+    8.0000    0.0157         0         0
+    9.0000    0.0140         0         0
+   10.0000    0.0126         0         0
+   11.0000    0.0115         0         0
+   12.0000    0.0105         0         0
+   13.0000    0.0097         0         0
+   14.0000    0.0090         0         0
+   15.0000    0.0084         0         0
+
+
+tabl =
+
+         0    0.5040         0         0
+    1.0000    0.1222         0         0
+    2.0000    0.0625         0         0
+    3.0000    0.0419         0         0
+    4.0000    0.0314         0         0
+    5.0000    0.0252         0         0
+    6.0000    0.0210         0         0
+    7.0000    0.0180         0         0
+    8.0000    0.0157         0         0
+    9.0000    0.0140         0         0
+   10.0000    0.0126         0         0
+   11.0000    0.0115         0         0
+   12.0000    0.0105         0         0
+   13.0000    0.0097         0         0
+   14.0000    0.0090         0         0
+   15.0000    0.0084         0         0
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+function tabla
+tabl=zeros(16,4);
+dnexacto=@(n) 0.504/(1+4*n*j);
+for col=1:6
+    switch col
+        case 1
+            for i=0:15
+                tabl(i+1,1)=i;
+            end
+        case 2
+            for ii=0:15
+                tabl(ii+1,2)=abs(dnexacto(ii));
+            end
+%         case 3
+%             T_0 = pi; N_0 = 256; T = T_0/N_0; t = (0:T:T*(N_0-1))'; M = 10;
+%             x = exp(-t/2); x(1) = (exp(-pi/2) + 1)/2;
+%             D_n = fft (x)/N_0; n = [0:15]';
+%             for iii=0:15
+%                 tabl(iii+1,3)=abs(fftshift (D_n));
+%             end
+%         case 4
+%             m=15000;
+% n=(0:4);
+% b=pi; a=0; t=-100:.1:100;
+% w0=2*pi/(b-a);
+% f=@(t) exp(-t/2)*exp(-n*w0*1i*t);
+% 
+% h=(b-a)/m;
+% 
+% aprox=f(a)+f(b);
+% for i=1:m-1
+% x=a+i*h;
+% aprox=aprox+2*f(x);
+% for iv=1:16
+%     aprox=(h/2)*aprox;
+% tabl(iv,4)=aprox;
+% end
+%     end
+end
+tabl
+end
+##### SOURCE END #####
+--></body></html>
